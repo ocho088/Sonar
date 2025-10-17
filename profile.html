@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Carga - SONAR</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="profile-container">
+        <header class="profile-header">
+            <div>
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver a SONAR</a>
+                <h1>Panel de Carga del Demo</h1>
+            </div>
+            <button id="upload-music-btn" class="submit-btn"><i class="fas fa-plus"></i> Cargar Nuevo Lanzamiento</button>
+        </header>
+
+        <main class="profile-content">
+            <h2>Lanzamientos Cargados en el Demo</h2>
+            <div id="releases-list" class="releases-list">
+                <!-- El JavaScript llenará esta sección -->
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL PARA SUBIR MÚSICA -->
+    <div id="upload-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="close-modal-btn">&times;</button>
+            <h2>Cargar Nuevo Lanzamiento</h2>
+            <form id="upload-form">
+                
+                <p class="form-section-title">Información del Artista</p>
+                <div class="form-group">
+                    <label for="artist-name">Nombre del Artista</label>
+                    <!-- CAMBIO: Se añade el atributo 'list' para conectar con el datalist -->
+                    <input type="text" id="artist-name" list="artist-suggestions" placeholder="Escribe un nombre nuevo o existente" required>
+                    <!-- CAMBIO: Datalist para las sugerencias -->
+                    <datalist id="artist-suggestions">
+                        <!-- Las opciones se llenarán con JavaScript -->
+                    </datalist>
+                </div>
+                
+                <!-- CAMBIO: Contenedor para los campos de nuevo artista -->
+                <div id="new-artist-fields">
+                    <div class="form-group">
+                        <label for="artist-profile-pic">Foto de Perfil (Circular)</label>
+                        <input type="file" id="artist-profile-pic" accept="image/*">
+                        <small>Necesaria solo para artistas nuevos.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="artist-banner-pic">Imagen de Banner</label>
+                        <input type="file" id="artist-banner-pic" accept="image/*">
+                        <small>Necesaria solo para artistas nuevos.</small>
+                    </div>
+                </div>
+
+                <p class="form-section-title">Detalles del Lanzamiento</p>
+                <div class="form-group">
+                    <label for="release-title">Título del Lanzamiento</label>
+                    <input type="text" id="release-title" placeholder="Ej: Clics Modernos" required>
+                </div>
+                <div class="form-group">
+                    <label for="release-genre">Género</label>
+                    <input type="text" id="release-genre" placeholder="Ej: New Wave" required>
+                </div>
+                <div class="form-group">
+                    <label for="release-cover">Portada del Lanzamiento (1x1)</label>
+                    <input type="file" id="release-cover" accept="image/*" required>
+                </div>
+
+                <p class="form-section-title">Archivos de Audio</p>
+                <div id="drop-zone" class="drop-zone">
+                    <i class="fas fa-music"></i>
+                    <p>Arrastra tus archivos MP3 aquí</p>
+                    <input type="file" id="file-input" multiple accept=".mp3" hidden>
+                </div>
+                <div id="song-list-editor"></div>
+                <button type="submit" class="submit-btn">Publicar Lanzamiento</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/database.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
